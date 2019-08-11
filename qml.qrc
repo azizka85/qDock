@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>DockControl.qml</file>
+        <file>close.svg</file>
+        <file>DockSpace.qml</file>
+    </qresource>
+</RCC>
