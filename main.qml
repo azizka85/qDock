@@ -14,7 +14,6 @@ Window {
     DockControl {
         id: world1
         visible: false
-        firstItem: true
         dockTitle: "World 1"
         titleVisible: isTitleVisible
 
@@ -41,8 +40,6 @@ Window {
         visible: false
         dockTitle: "World 3"
         titleVisible: isTitleVisible
-        ratio: 0.33
-        orientation: Qt.Vertical
 
         Text {
             anchors.centerIn: parent
@@ -52,12 +49,12 @@ Window {
 
     DockSpace {
         id: dockSpace
+        root: world4
 
         DockControl {
             id: world4
             dockTitle: "World 4"
             titleVisible: isTitleVisible
-            ratio: 0.33
 
             Text {
                 anchors.centerIn: parent
@@ -77,28 +74,28 @@ Window {
         Button {
             text: "world 1"
             onClicked: {
-                dockSpace.insertDock(world1, null);
+                dockSpace.insertDock(world1, world2, Qt.Vertical, 0.6, true);
             }
         }
 
         Button {
             text: "world 2"
             onClicked: {
-                dockSpace.insertDock(world2, world1);
+                dockSpace.insertDock(world2, world1, Qt.Vertical, 0.6, false);
             }
         }
 
         Button {
             text: "world 3"
             onClicked: {
-                dockSpace.insertDock(world3, world2);
+                dockSpace.insertDock(world3, world4, Qt.Vertical, 0.4, true);
             }
         }
 
         Button {
             text: "world 4"
             onClicked: {
-                dockSpace.insertDock(world4, world3);
+                dockSpace.insertDock(world4, world3, Qt.Vertical, 0.4, false);
             }
         }
     }
