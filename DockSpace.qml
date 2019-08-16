@@ -1,7 +1,7 @@
 import QtQuick 2.0
 
 Item {
-    property DockControl root: null
+    property Item root: null
 
     id: dockSpace
     width: parent.width
@@ -9,13 +9,17 @@ Item {
 
     function insertFirst(dockControl)
     {
-        if(dockControl.visible === false) {
-            dockControl.parent = dockSpace;
-            dockControl.shared = dockSpace;
-            dockControl.shareWith = root;
-            dockControl.visible = true;
+        if(dockControl.visible === false)
+        {
+            if(root == null)
+            {
+                dockControl.parent = dockSpace;
 
-            root = dockControl;
+                root = dockControl;
+            }
+            else dockControl.shareWith = root;
+
+            dockControl.visible = true;
         }
     }
 
@@ -36,8 +40,6 @@ Item {
 
                 dock.shareWith = shareWith;
                 dock.visible = true;
-
-                if(shareWith === root) root = dock;
             }
             else insertFirst(dock);
         }

@@ -105,10 +105,9 @@ Item {
         if(shareWith != null) {
             var dock = shareWith;
 
-            dockSplit.parent = shared != null ? parent : dock.parent;
+            dockSplit.parent = dock.parent;
             dockItem.parent = firstItem ? item1 : item2;
-            if(dock.shareWith === null && dock.shared !== null) dock.parent = firstItem ? item2 : item1;
-            else dock.splitter.parent = firstItem ? item2 : item1;
+            dock.parent = firstItem ? item2 : item1;
             dockSplit.visible = true;
 
             dock.shared = this;
